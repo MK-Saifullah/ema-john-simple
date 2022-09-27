@@ -1,0 +1,16 @@
+.header{
+    background: #1C2B35;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 95px;
+    height: 80px;
+}
+.header a{
+    text-decoration: none;
+    color: #ffffff;
+    margin-right: 32px;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 20px;
+}
