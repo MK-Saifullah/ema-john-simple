@@ -1,5 +1,8 @@
 .cart-history{
     /* background: rgba(255, 153, 0, 0.3);
     height: 100%; */
+    position: sticky;
+    top: 0;
+    font-size: 12px;
 }
     
