@@ -1,21 +1,25 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import React, { useEffect, useState } from 'react';
-import { addToDb, getStoredCart } from '../../utilities/fakedb';
+import { Link, useLoaderData } from 'react-router-dom';
+import { addToDb, deleteShoppingCart, getStoredCart } from '../../utilities/fakedb';
 import Cart from '../Cart/Cart';
 import Products from '../Products/Products';
 import './Shop.css'
 
 const Shop = () => {
 
-    const [products, setProducts] = useState([]);
-    useEffect( () => {
-        // fetch('https://raw.githubusercontent.com/ProgrammingHero1/ema-john-resources/main/fakeData/products.json')
-        fetch('products.json')
-        .then(res => res.json())
-        .then(data => {
-            // console.log(data)
-            setProducts(data)
-        })
-    }, []);
+    const products = useLoaderData();
+    // const [products, setProducts] = useState([]);
+    // useEffect( () => {
+    //     // fetch('https://raw.githubusercontent.com/ProgrammingHero1/ema-john-resources/main/fakeData/products.json')
+    //     fetch('products.json')
+    //     .then(res => res.json())
+    //     .then(data => {
+    //         // console.log(data)
+    //         setProducts(data)
+    //     })
+    // }, []);
 
     useEffect( () => {
         const storedCart = getStoredCart();
@@ -53,6 +57,11 @@ const Shop = () => {
         setCart(newCart);
         addToDb(selectedProduct.id)
     }
+
+    const handleClearCart = () => {
+        setCart([]);
+        deleteShoppingCart();
+    }
     return (
         <div className='shop-container'>
             <div className='products-container'>
@@ -65,7 +74,11 @@ const Shop = () => {
                 }
             </div>
             <div className='cart-container'>
-                <Cart cart={cart}></Cart>
+                <Cart cart={cart} handleClearCart={handleClearCart}>
+                    <Link to="orders">
+                        <button type="" className='btn-review'>Review Order <FontAwesomeIcon icon={faCartShopping}></FontAwesomeIcon></button>
+                    </Link>
+                </Cart>
             </div>
         </div>
     );
