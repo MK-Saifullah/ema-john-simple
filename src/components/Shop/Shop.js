@@ -10,6 +10,7 @@ import './Shop.css'
 const Shop = () => {
 
     const products = useLoaderData();
+    console.log('products here', products);
     // const [products, setProducts] = useState([]);
     // useEffect( () => {
     //     // fetch('https://raw.githubusercontent.com/ProgrammingHero1/ema-john-resources/main/fakeData/products.json')
