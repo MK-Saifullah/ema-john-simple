@@ -13,7 +13,7 @@ const Orders = () => {
     // console.log(products)
     const handleRemoveItem = (id) => {
         // console.log(id)
-        const remaining = cart.filter(product => product.id !== id);
+        const remaining = cart.filter(product => product._id !== id);
         setCart(remaining);
         removeFromDb(id);
     }

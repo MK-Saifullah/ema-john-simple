@@ -20,9 +20,7 @@ function App() {
       children: [
         { 
           path: '/',
-          loader: () => {
-            return fetch('products.json');
-          }, 
+          // loader: () => {return fetch('http://localhost:5000/products');}, 
           element: <Shop></Shop>
         },
         { 
